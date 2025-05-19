@@ -46,27 +46,21 @@ public class GradeCalculator {
     } 
      
     // Makes sure the grade is within valid range 
-    private static int getValidGrade(Scanner sc) { 
-        int grade = 0; 
-        boolean validInput = false; 
-         
-        while (!validInput) { 
-            try { 
-                grade = sc.nextInt(); 
-                 
-                if (grade >= 0 && grade <= 100) { 
-                    validInput = true; 
-                } else { 
-                    System.out.print("Please enter a number between 0-100: "); 
-                } 
-            } catch (Exception e) { 
-                System.out.print("That's not a valid number! Try again: "); 
-                sc.next(); // Clear the scanner buffer 
-            } 
-        } 
-         
-        return grade; 
-    } 
+   private static int getValidGrade(Scanner sc) {
+    while (true) {
+        if (sc.hasNextInt()) {
+            int grade = sc.nextInt();
+            if (grade >= 0 && grade <= 100) {
+                return grade;
+            } else {
+                System.out.print("Please enter a number between 0-100: ");
+            }
+        } else {
+            System.out.print("That's not a valid number! Try again: ");
+            sc.next(); // Clear the invalid input
+        }
+    }
+}
      
     // Convert numeric score to letter grade 
     private static String getLetterGrade(double score) { 
