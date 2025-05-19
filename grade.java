@@ -1,4 +1,4 @@
-mport java.util.Scanner; 
+import java.util.Scanner; 
 /** 
  * Grade Calculator Application 
  * CS 310 Mini Project 
@@ -6,7 +6,39 @@ mport java.util.Scanner;
  */ 
 public class GradeCalculator { 
      
-    public static void main(String[] args) { 
+    // Helper method to calculate average 
+    private static double calculateAverage(int m, int s, int e) { 
+        return (m + s + e) / 3.0; 
+    } 
+     
+    // Makes sure the grade is within valid range 
+   private static int getValidGrade(Scanner sc) {
+    while (true) {
+        if (sc.hasNextInt()) {
+            int grade = sc.nextInt();
+            if (grade >= 0 && grade <= 100) {
+                return grade;
+            } else {
+                System.out.print("Please enter a number between 0-100: ");
+            }
+        } else {
+            System.out.print("That's not a valid number! Try again: ");
+            sc.next(); // Clear the invalid input
+        }
+    }
+}
+     
+    // Convert numeric score to letter grade 
+    private static String getLetterGrade(double score) { 
+        if (score >= 90) return "A"; 
+        if (score >= 80) return "B"; 
+        if (score >= 70) return "C";  
+        if (score >= 60) return "D"; 
+        return "F"; 
+         
+    } 
+     
+     public static void main(String[] args) { 
         Scanner input = new Scanner(System.in); 
          
         // Display welcome banner 
@@ -38,36 +70,5 @@ public class GradeCalculator {
          
         System.out.println("\nThanks for using Grade Calculator!"); 
         input.close(); 
-    } 
-     
-    // Helper method to calculate average 
-    private static double calculateAverage(int m, int s, int e) { 
-        return (m + s + e) / 3.0; 
-    } 
-     
-    // Makes sure the grade is within valid range 
-   private static int getValidGrade(Scanner sc) {
-    while (true) {
-        if (sc.hasNextInt()) {
-            int grade = sc.nextInt();
-            if (grade >= 0 && grade <= 100) {
-                return grade;
-            } else {
-                System.out.print("Please enter a number between 0-100: ");
-            }
-        } else {
-            System.out.print("That's not a valid number! Try again: ");
-            sc.next(); // Clear the invalid input
-        }
-    }
-}
-     
-    // Convert numeric score to letter grade 
-    private static String getLetterGrade(double score) { 
-        if (score >= 90) return "A"; 
-        if (score >= 80) return "B"; 
-        if (score >= 70) return "C";  
-        if (score >= 60) return "D"; 
-        return "F"; 
     } 
 }
