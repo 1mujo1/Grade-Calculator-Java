@@ -6,7 +6,7 @@ import java.util.Scanner;
  */ 
 public class GradeCalculator { 
      
-    // Helper method to calculate average 
+    // method to calculate average 
     private static double calculateAverage(int m, int s, int e) { 
         return (m + s + e) / 3.0; 
     } 
@@ -41,11 +41,11 @@ public class GradeCalculator {
      public static void main(String[] args) { 
         Scanner input = new Scanner(System.in); 
          
-        // Display welcome banner 
+        // Display welcome 
         System.out.println("=== Grade Calculator ==="); 
         System.out.println("Enter your scores below:"); 
          
-        // Get subject grades from user 
+        // Get grades from user 
         System.out.print("Math (0-100): "); 
         int mathScore = getValidGrade(input); 
          
@@ -55,11 +55,11 @@ public class GradeCalculator {
         System.out.print("English (0-100): "); 
         int englishScore = getValidGrade(input); 
          
-        // Calculate the average grade 
+        // Calculatiing the average  
         double avgScore = calculateAverage(mathScore, scienceScore, englishScore); 
         String letter = getLetterGrade(avgScore); 
          
-        // Show results to user 
+        // Showing results to user 
         System.out.println("\n=== Results ==="); 
         System.out.printf("Average: %.1f%%\n", avgScore); 
         System.out.println("Letter Grade: " + letter); 
